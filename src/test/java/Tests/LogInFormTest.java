@@ -28,7 +28,7 @@ public class LogInFormTest
     OKLoginPage logInPage = new OKLoginPage();
     logInPage.logIn("", LogInData.ValidPassword);
 
-    logInPage.getLogInErrorMessage().shouldHave(Condition.text(LogInData.passwordRequestMessage));
+    logInPage.getLogInErrorMessage().shouldHave(Condition.text(LogInData.usernameRequestMessage));
   }
 
   @Test
