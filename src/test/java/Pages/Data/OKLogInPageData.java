@@ -1,9 +1,9 @@
 package Pages.Data;
 
-public record OKLogInPageData()
+public class OKLogInPageData
 {
-  public static final String usernameBoxLoc = "//*[@name='st.email']";
-  public static final String passwordBoxLoc = "//*[@name='st.password']";
-  public static final String signInButtonLoc = "//*[@class='button-pro __wide']";
-  public static final String errorMessageLoc = "//*[@class='input-e login_error']";
+  public final String usernameBoxLoc = "//*[@name='st.email']";
+  public final String passwordBoxLoc = "//*[@name='st.password']";
+  public final String signInButtonLoc = "//*[@class='button-pro __wide']";
+  public final String errorMessageLoc = "//*[@class='input-e login_error']";
 }

@@ -8,20 +8,22 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class OKLoginPage
 {
+  private final OKLogInPageData data = new OKLogInPageData();
+
   public void logIn(String username, String password)
   {
-    $(byXpath(OKLogInPageData.usernameBoxLoc)).val(username);
-    $(byXpath(OKLogInPageData.passwordBoxLoc)).val(password);
-    $(byXpath(OKLogInPageData.signInButtonLoc)).click();
+    $(byXpath(data.usernameBoxLoc)).val(username);
+    $(byXpath(data.passwordBoxLoc)).val(password);
+    $(byXpath(data.signInButtonLoc)).click();
   }
 
   public SelenideElement getLogInErrorMessage()
   {
-    return $(byXpath(OKLogInPageData.errorMessageLoc));
+    return $(byXpath(data.errorMessageLoc));
   }
 
   public SelenideElement getEnterButton()
   {
-    return $(byXpath(OKLogInPageData.signInButtonLoc));
+    return $(byXpath(data.signInButtonLoc));
   }
 }

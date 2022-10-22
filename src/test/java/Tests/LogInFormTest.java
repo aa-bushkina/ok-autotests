@@ -1,7 +1,7 @@
 package Tests;
 
 import Pages.OKPersonalPage;
-import Tests.Data.LogInData;
+import Tests.Data.TestsData;
 import Pages.OKLoginPage;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
@@ -11,55 +11,57 @@ import org.junit.jupiter.api.Test;
 
 public class LogInFormTest
 {
+  private final TestsData data = new TestsData();
+
   @Test
   public void logInWithoutData()
   {
-    Selenide.open(LogInData.LogInUrl);
+    Selenide.open(data.LogInUrl);
     OKLoginPage logInPage = new OKLoginPage();
     logInPage.logIn("", "");
 
-    logInPage.getLogInErrorMessage().shouldHave(Condition.text(LogInData.usernameRequestMessage));
+    logInPage.getLogInErrorMessage().shouldHave(Condition.text(data.usernameRequestMessage));
   }
 
   @Test
   public void logInWithoutUsername()
   {
-    Selenide.open(LogInData.LogInUrl);
+    Selenide.open(data.LogInUrl);
     OKLoginPage logInPage = new OKLoginPage();
-    logInPage.logIn("", LogInData.ValidPassword);
+    logInPage.logIn("", data.ValidPassword);
 
-    logInPage.getLogInErrorMessage().shouldHave(Condition.text(LogInData.usernameRequestMessage));
+    logInPage.getLogInErrorMessage().shouldHave(Condition.text(data.usernameRequestMessage));
   }
 
   @Test
   public void logInWithoutPassword()
   {
-    Selenide.open(LogInData.LogInUrl);
+    Selenide.open(data.LogInUrl);
     OKLoginPage logInPage = new OKLoginPage();
-    logInPage.logIn(LogInData.ValidUsername, "");
+    logInPage.logIn(data.ValidUsername, "");
 
-    logInPage.getLogInErrorMessage().shouldHave(Condition.text(LogInData.passwordRequestMessage));
+    logInPage.getLogInErrorMessage().shouldHave(Condition.text(data.passwordRequestMessage));
   }
 
   @Test
   public void logInWithInvalidData()
   {
-    Selenide.open(LogInData.LogInUrl);
+    Selenide.open(data.LogInUrl);
     OKLoginPage logInPage = new OKLoginPage();
-    logInPage.logIn(LogInData.InvalidUsername, LogInData.InvalidPassword);
+    logInPage.logIn(data.InvalidUsername, data.InvalidPassword);
 
-    logInPage.getLogInErrorMessage().shouldHave(Condition.text(LogInData.errorLogInMessage));
+    logInPage.getLogInErrorMessage().shouldHave(Condition.text(data.errorLogInMessage));
   }
 
   @Test
   public void logInWithCorrectData()
   {
-    Selenide.open(LogInData.LogInUrl);
-    new OKLoginPage().logIn(LogInData.ValidUsername, LogInData.ValidPassword);
+    Selenide.open(data.LogInUrl);
+    new OKLoginPage().logIn(data.ValidUsername, data.ValidPassword);
 
     OKPersonalPage personalPage = new OKPersonalPage();
-    Assertions.assertEquals(LogInData.LogInUrl, personalPage.getUrl());
-    personalPage.getUserNickname().shouldHave(Condition.text(LogInData.FIO));
+    Assertions.assertEquals(data.LogInUrl, personalPage.getUrl());
+    personalPage.getUserNickname().shouldHave(Condition.text(data.FIO));
 
     personalPage.logOut();
   }

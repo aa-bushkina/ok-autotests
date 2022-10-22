@@ -1,5 +1,6 @@
 package Pages;
 
+import Pages.Data.OKLogInPageData;
 import Pages.Data.OKPersonalPageData;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
@@ -10,9 +11,11 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class OKPersonalPage
 {
+  private final OKPersonalPageData data = new OKPersonalPageData();
+
   public SelenideElement getUserNickname()
   {
-    return $(byXpath(OKPersonalPageData.nicknameLoc));
+    return $(byXpath(data.nicknameLoc));
   }
 
   public String getUrl()
@@ -22,21 +25,21 @@ public class OKPersonalPage
 
   public void publishNote(String text)
   {
-    $(byXpath(OKPersonalPageData.writeNoteBoxLoc)).click();
-    $(byXpath(OKPersonalPageData.noteBoxPopUpLoc)).sendKeys(text);
-    $(byXpath(OKPersonalPageData.shareButtonLoc)).click();
+    $(byXpath(data.writeNoteBoxLoc)).click();
+    $(byXpath(data.noteBoxPopUpLoc)).sendKeys(text);
+    $(byXpath(data.shareButtonLoc)).click();
   }
 
   public SelenideElement getNote()
   {
-    return $(byXpath(OKPersonalPageData.noteLoc));
+    return $(byXpath(data.noteLoc));
   }
 
   public void logOut()
   {
-    $(byXpath(OKPersonalPageData.actionButtonLoc)).click();
-    $(byXpath(OKPersonalPageData.exitButtonLoc)).click();
-    $(byXpath(OKPersonalPageData.exitButtonPopUpLoc)).click();
+    $(byXpath(data.actionButtonLoc)).click();
+    $(byXpath(data.exitButtonLoc)).click();
+    $(byXpath(data.exitButtonPopUpLoc)).click();
   }
 
 }

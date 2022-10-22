@@ -2,23 +2,24 @@ package Tests;
 
 import Pages.OKLoginPage;
 import Pages.OKPersonalPage;
-import Tests.Data.LogInData;
-import Tests.Data.MakeNoteData;
+import Tests.Data.TestsData;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.Test;
 
 public class MakeNoteTest
 {
+  private final TestsData data = new TestsData();
+
   @Test
   public void publishNote()
   {
-    Selenide.open(LogInData.LogInUrl);
-    new OKLoginPage().logIn(LogInData.ValidUsername, LogInData.ValidPassword);
+    Selenide.open(data.LogInUrl);
+    new OKLoginPage().logIn(data.ValidUsername, data.ValidPassword);
     OKPersonalPage personalPage = new OKPersonalPage();
 
-    personalPage.publishNote(MakeNoteData.noteText);
-    personalPage.getNote().shouldHave(Condition.text(MakeNoteData.noteText));
+    personalPage.publishNote(data.noteText);
+    personalPage.getNote().shouldHave(Condition.text(data.noteText));
 
     personalPage.logOut();
   }
