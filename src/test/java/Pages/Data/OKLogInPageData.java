@@ -2,10 +2,8 @@ package Pages.Data;
 
 public record OKLogInPageData()
 {
-  public static final String attributeLoc = "data-l";
-  public static final String classLoc = "class";
-  public static final String usernameBoxLoc = "st.email";
-  public static final String passwordBoxLoc = "st.password";
-  public static final String signInButtonLoc = "t,sign_in";
-  public static final String errorMessageLoc = "input-e login_error";
+  public static final String usernameBoxLoc = "//*[@name='st.email']";
+  public static final String passwordBoxLoc = "//*[@name='st.password']";
+  public static final String signInButtonLoc = "//*[@class='button-pro __wide']";
+  public static final String errorMessageLoc = "//*[@class='input-e login_error']";
 }

@@ -10,18 +10,18 @@ public class OKLoginPage
 {
   public void logIn(String username, String password)
   {
-    $(byName(OKLogInPageData.usernameBoxLoc)).val(username);
-    $(byName(OKLogInPageData.passwordBoxLoc)).val(password);
-    $(byAttribute(OKLogInPageData.attributeLoc, OKLogInPageData.signInButtonLoc)).click();
+    $(byXpath(OKLogInPageData.usernameBoxLoc)).val(username);
+    $(byXpath(OKLogInPageData.passwordBoxLoc)).val(password);
+    $(byXpath(OKLogInPageData.signInButtonLoc)).click();
   }
 
   public SelenideElement getLogInErrorMessage()
   {
-    return $(byAttribute(OKLogInPageData.classLoc, OKLogInPageData.errorMessageLoc));
+    return $(byXpath(OKLogInPageData.errorMessageLoc));
   }
 
   public SelenideElement getEnterButton()
   {
-    return $(byAttribute(OKLogInPageData.attributeLoc, OKLogInPageData.signInButtonLoc));
+    return $(byXpath(OKLogInPageData.signInButtonLoc));
   }
 }
