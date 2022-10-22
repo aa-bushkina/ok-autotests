@@ -12,7 +12,7 @@ public class OKPersonalPage
 {
   public SelenideElement getUserNickname()
   {
-    return $(byAttribute(OKPersonalPageData.attributeLoc, OKPersonalPageData.nicknameLoc));
+    return $(byXpath(OKPersonalPageData.nicknameLoc));
   }
 
   public String getUrl()
@@ -22,21 +22,21 @@ public class OKPersonalPage
 
   public void publishNote(String text)
   {
-    $(byAttribute(OKPersonalPageData.classLoc, OKPersonalPageData.writeSmthBoxLoc)).click();
-    $(byAttribute(OKPersonalPageData.classLoc, OKPersonalPageData.noteBoxLoc)).sendKeys(text);
-    $(byAttribute(OKPersonalPageData.classLoc, OKPersonalPageData.shareButtonLoc)).click();
+    $(byXpath(OKPersonalPageData.writeNoteBoxLoc)).click();
+    $(byXpath(OKPersonalPageData.noteBoxPopUpLoc)).sendKeys(text);
+    $(byXpath(OKPersonalPageData.shareButtonLoc)).click();
   }
 
   public SelenideElement getNote()
   {
-    return $(byAttribute(OKPersonalPageData.classLoc, OKPersonalPageData.noteLoc));
+    return $(byXpath(OKPersonalPageData.noteLoc));
   }
 
   public void logOut()
   {
-    $(byAttribute(OKPersonalPageData.classLoc, OKPersonalPageData.actionButtonLoc)).click();
-    $(byAttribute(OKPersonalPageData.attributeLoc, OKPersonalPageData.exitButtonLoc)).click();
-    $(byName(OKPersonalPageData.exitButtonPopUpLoc)).click();
+    $(byXpath(OKPersonalPageData.actionButtonLoc)).click();
+    $(byXpath(OKPersonalPageData.exitButtonLoc)).click();
+    $(byXpath(OKPersonalPageData.exitButtonPopUpLoc)).click();
   }
 
 }
